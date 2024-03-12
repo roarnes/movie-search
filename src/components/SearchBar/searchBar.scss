@@ -1,0 +1,10 @@
+.searchBar {
+  width: 80vw;
+  display: flex;
+  gap: 8px;
+
+  input {
+    flex: 1;
+    padding: 12px 20px;
+  }
+}
