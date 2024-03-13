@@ -1,0 +1,38 @@
+$medium-width: 600px;
+$big-width: 900px;
+
+@mixin smallScreen {
+  @media (max-width: #{$medium-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin mediumScreen {
+  @media (min-width: #{$medium-width}) and (max-width: #{$big-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin bigScreen {
+  @media (min-width: #{$big-width}) {
+    @content;
+  }
+}
+
+@mixin media($keys...) {
+  @each $key in $keys {
+    @if ($key == smallScreen) {
+      @include smallScreen {
+        @content;
+      }
+    } @else if ($key == mediumScreen) {
+      @include mediumScreen {
+        @content;
+      }
+    } @else if ($key == bigScreen) {
+      @include bigScreen {
+        @content;
+      }
+    }
+  }
+}
