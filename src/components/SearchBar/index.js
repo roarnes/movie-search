@@ -7,7 +7,7 @@ const SearchBar = (props) => {
 
   const inputRef = useRef(null)
   const [searchInput, setSearchInput] = useState('')
-  const [showSuggestions, setShowSuggestions] = useState('')
+  const [isMouseOver, setIsMouseOver] = useState('')
 
   const {
     handleFetchMovieAutoComplete,
@@ -49,25 +49,31 @@ const SearchBar = (props) => {
 
   const handleSearchButtonClick = () => onSearch(searchInput)
 
+  const showSuggestions =
+    isMouseOver && movieAutoCompleteList && movieAutoCompleteList.length > 0
+
   return (
     <div
       className="searchBar"
-      onMouseOver={() => setShowSuggestions(true)}
-      onMouseLeave={() => setShowSuggestions(false)}
+      onMouseOver={() => setIsMouseOver(true)}
+      onMouseLeave={() => setIsMouseOver(false)}
     >
       <div className="autocomplete">
         <input
           type="text"
-          list="movies"
           ref={inputRef}
           onChange={(e) => handleInputChange(e.target.value)}
           onKeyDown={(e) => handleInputKeyDown(e.key)}
+          name="searchInput"
+          aria-label="searchInput"
         />
         {showSuggestions && (
-          <div className="suggestions">
+          <div className="suggestions" role="list" aria-label="suggestionList">
             {movieAutoCompleteList.map((movie, index) => (
               <div
                 className="suggestionItem"
+                role="listitem"
+                aria-label="suggestionItem"
                 key={`movie-option-${index}`}
                 onClick={() => handleAutoCompleteClick(movie)}
               >

@@ -4,7 +4,11 @@ const MovieThumbnail = (props) => {
   const { detail } = props
   const { title, overview, poster, runtime, genres } = detail
   return (
-    <div className="movieThumbnail">
+    <div
+      className="movieThumbnail"
+      role="listitem"
+      aria-label="searchResultItem"
+    >
       <img src={poster} alt={`${title} movie poster`} />
       <div className="details">
         <h2>{title}</h2>
