@@ -17,10 +17,13 @@ const App = () => {
     }
     handleFetchMovieSearch({ keyword })
   }
+
+  const showResults = movieSearchResults && movieSearchResults.length > 0
+
   return (
     <div className="App">
       <SearchBar onSearch={handleSearchMovie} />
-      {movieSearchResults && <SearchResults results={movieSearchResults} />}
+      {showResults && <SearchResults results={movieSearchResults} />}
     </div>
   )
 }
