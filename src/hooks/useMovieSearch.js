@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 const useMovieSearch = () => {
-  const [movieSearchList, setMovieSearchList] = useState([])
+  const [movieSearchResults, setMovieSearchResults] = useState([])
   const limit = 50
 
   const handleFetchMovieSearch = async ({ keyword }) => {
@@ -12,17 +12,17 @@ const useMovieSearch = () => {
     })
     const responseJson = await response.json()
 
-    setMovieSearchList(responseJson)
+    setMovieSearchResults(responseJson)
   }
 
-  const resetMovieSearchList = () => {
-    setMovieSearchList([])
+  const resetMovieSearchResults = () => {
+    setMovieSearchResults([])
   }
 
   return {
     handleFetchMovieSearch,
-    movieSearchList,
-    resetMovieSearchList,
+    movieSearchResults,
+    resetMovieSearchResults,
   }
 }
 
