@@ -1,3 +1,5 @@
+@use './styles/mediaQueries.scss' as *;
+
 .App {
   margin: 10vh 0;
   text-align: center;
@@ -6,4 +8,8 @@
   align-items: center;
   justify-content: center;
   gap: 32px;
+
+  @include media(smallScreen) {
+    margin: 10vh 12px;
+  }
 }

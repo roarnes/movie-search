@@ -1,3 +1,5 @@
+@use '../../styles/mediaQueries.scss' as *;
+
 .movieThumbnail {
   text-align: left;
   height: 200px;
@@ -8,12 +10,23 @@
   border-radius: 12px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.07);
 
+  @include media(smallScreen) {
+    flex-direction: column;
+    height: 500px;
+    justify-content: center;
+  }
+
   img {
     object-fit: contain;
     max-width: 200px;
     max-height: 100%;
     width: auto;
     height: auto;
+
+    @include media(smallScreen) {
+      max-width: 150px;
+      margin: auto;
+    }
   }
 
   .details {
